@@ -11,7 +11,7 @@ import 'package:gatherly/utill/color_resources.dart';
 import 'package:gatherly/utill/custom_themes.dart';
 
 class StallsWidget extends StatefulWidget {
-  RealmResults<Stallsmodel> stallsdetails;
+ final RealmResults<Stallsmodel> stallsdetails;
   StallsWidget({
     Key? key,
     required this.stallsdetails,

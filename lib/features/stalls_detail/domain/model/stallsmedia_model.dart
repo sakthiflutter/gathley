@@ -23,7 +23,7 @@ class _StallsMedia {
     var models = r.all<StallsMedia>();
     final lastModel = models.isNotEmpty ? models.last : null;
     print(lastModel?.id.toString());
-    return (lastModel!.id! + 1);
+    return lastModel?.id!=null?(lastModel!.id! + 1):1;
   }
 }
 

@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gatherly/utill/color_resources.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/services.dart';
 
@@ -17,6 +19,7 @@ class FullScreenVideoPlayer extends StatefulWidget {
 class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
   late VideoPlayerController _controller;
   bool _isFullScreen = false;
+  RxBool isload=true.obs;
 
   @override
   void initState() {
@@ -26,6 +29,11 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
         setState(() {});
         _controller.play();
       });
+    _controller.addListener(() {
+      isload.value=false;
+      isload.value=true;
+     
+    });
   }
 
   @override
@@ -101,38 +109,71 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
 
   Widget _buildControls(BuildContext context) {
     return Positioned(
-      bottom: 0,
+      bottom: 10,
       left: 0,
       right: 0,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           VideoProgressIndicator(
             _controller,
             allowScrubbing: true,
             colors: const VideoProgressColors(),
+            padding: EdgeInsets.symmetric(horizontal: 18),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                _formatDuration(_controller.value.position),
-                style: const TextStyle(color: Colors.white),
-              ),
-              Text(
-                _formatDuration(_controller.value.duration),
-                style: const TextStyle(color: Colors.white),
-              ),
-            ],
-          ),
+          Obx(() => isload.value?Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  _formatDuration(_controller.value.position),
+                  style: const TextStyle(color: Colors.white),
+                ),
+                Text(
+                  _formatDuration(_controller.value.duration),
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+          ):SizedBox()),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              IconButton(
-                icon: const Icon(Icons.replay_10, color: Colors.white),
-                onPressed: _seekBackward,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: IconButton(
+                  icon: const Icon(Icons.replay_10, color: Colors.white,size: 50,),
+                  onPressed: _seekBackward,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    if (_controller.value.isPlaying) {
+                      _controller.pause();
+                    } else {
+                      _controller.play();
+                    }
+                  });
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: ColorResources.stallsButton,
+                    borderRadius: BorderRadius.circular(50)
+                  ),
+                  child: Icon(
+                    _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
               ),
               IconButton(
-                icon: const Icon(Icons.forward_10, color: Colors.white),
+                icon: const Icon(Icons.forward_10, color: Colors.white,size: 50,),
                 onPressed: _seekForward,
               ),
             ],

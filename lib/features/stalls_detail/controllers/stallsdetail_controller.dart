@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:gatherly/data/datasource/local/localdb.dart';
 import 'package:gatherly/features/stalls_detail/domain/model/stallsmedia_model.dart';
 import 'package:gatherly/features/stalls_detail/domain/model/thumbnamil_model.dart';
@@ -66,18 +67,18 @@ class StallsdetailCon extends GetxController {
     for (var element in media) {
       if (isVideoFile(element.path)) {
         File thumbnail = await vediothumbnail(element.path);
-        String destinationpath = await getDestinationFilePath(
+        String destination = await getDestinationFilePath(
             thumbnail.path.split("/").last.split(".").first);
-        destinationpath = "${destinationpath}image";
-        moveFile(thumbnail.path, destinationpath);
+        destination = "${destination}image";
+        moveFile(thumbnail.path, destination);
         String sourcedestinationpath = await getDestinationFilePath(
             element.path.split("/").last.split(".").first);
         moveFile(element.path, sourcedestinationpath);
       
         stallthumbnail.add(MediaFilePath(
-            sourcepath: sourcedestinationpath, thumbnailpath: destinationpath));
+            sourcepath: sourcedestinationpath, thumbnailpath: destination));
         var stallsmedia = StallsMedia(null, id,
-            media: Mediapath(sourcedestinationpath, destinationpath));
+            media: Mediapath(sourcedestinationpath, destination));
         stallsmedia.id = stallsmedia.getNextId();
         stallsmedia.save();
       } else {
@@ -127,7 +128,11 @@ class StallsdetailCon extends GetxController {
             recursive:
                 true); // Creates the directory and any necessary parent directories
       }
-    } catch (e) {
+    } catch (e) 
+    {
+      if (kDebugMode) {
+        print("unable to create");
+      }
     }
   }
 

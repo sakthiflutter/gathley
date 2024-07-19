@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:gatherly/features/stalls_detail/controllers/stallsdetail_controller.dart';
 import 'package:gatherly/features/stalls_detail/widget/media_fullscreen.dart';
 import 'package:gatherly/features/stalls_detail/widget/progress_widget.dart';
+import 'package:gatherly/utill/custom_themes.dart';
 import 'package:gatherly/utill/dimensions.dart';
 import 'package:get/get.dart';
+
+import '../../../utill/color_resources.dart';
 
 class CarouselSlide extends StatefulWidget {
   int stallsid;
@@ -155,6 +158,22 @@ class _CarouselSlideState extends State<CarouselSlide> {
                         ],
                       ),
                     )),
+                controller.stallthumbnail.isEmpty?Center(child: SizedBox(child: Text("No Files",style: textBold.copyWith(fontSize: 20),),)):   controller.stallthumbnail[_currentPage]
+                    .thumbnailpath !=
+                    null?Positioned(
+                  bottom: 25,
+                  left: 10,
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: ColorResources.stallsButton
+                    ),
+                    child: Icon(Icons.play_arrow,color: Colors.white,size: 40,),
+
+                  ),
+                ):const SizedBox(),
                 Positioned(
                     bottom: 10,
                     child: SizedBox(
