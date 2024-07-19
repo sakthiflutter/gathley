@@ -12,6 +12,7 @@ void main() {
     statusBarBrightness: Brightness.dark,
     statusBarIconBrightness: Brightness.dark,
   ));
+  
   runApp(const MyApp());
 }
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

@@ -4,6 +4,16 @@ class DateConverter {
   static String formatDate(DateTime dateTime) {
     return DateFormat('yyyy-MM-dd hh:mm:ss').format(dateTime);
   }
+   static String formatDateRange(DateTime startDate, DateTime endDate) {
+    final DateFormat monthDayFormat = DateFormat('MMM d');
+    final DateFormat yearFormat = DateFormat('y');
+
+    String start = monthDayFormat.format(startDate);
+    String end = monthDayFormat.format(endDate);
+    String year = yearFormat.format(endDate);
+
+    return '$start - $end, $year';
+  }
 
   static String estimatedDate(DateTime dateTime) {
     return DateFormat('dd MMM yyyy').format(dateTime);
@@ -46,6 +56,7 @@ class DateConverter {
     if (localDateTime.day == now.day && localDateTime.month == now.month && localDateTime.year == now.year) {
       return roughTimeString;
     }
+   
 
     DateTime yesterday = now.subtract(const Duration(days: 1));
 
