@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class StoryProgressBar extends StatefulWidget {
+class MediaProgressBar extends StatefulWidget {
   final int count;
   final int currentIndex;
   final Duration duration;
 
-  StoryProgressBar({
+  const MediaProgressBar({super.key,
     required this.count,
     required this.currentIndex,
     required this.duration,
   });
 
   @override
-  _StoryProgressBarState createState() => _StoryProgressBarState();
+  _MediaProgressBarState createState() => _MediaProgressBarState();
 }
 
-class _StoryProgressBarState extends State<StoryProgressBar>
+class _MediaProgressBarState extends State<MediaProgressBar>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
@@ -41,7 +41,7 @@ class _StoryProgressBarState extends State<StoryProgressBar>
   }
 
   @override
-  void didUpdateWidget(covariant StoryProgressBar oldWidget) {
+  void didUpdateWidget(covariant MediaProgressBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.currentIndex != widget.currentIndex) {
       _controller.reset();

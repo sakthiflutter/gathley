@@ -7,8 +7,8 @@ import 'package:gatherly/utill/dimensions.dart';
 import 'package:get/get.dart';
 
 class StalsDetail extends StatefulWidget {
-  int stallid;
-  StalsDetail({super.key, required this.stallid});
+ final  int stallid;
+  const StalsDetail({super.key, required this.stallid});
 
   @override
   State<StalsDetail> createState() => _StalsDetailState();

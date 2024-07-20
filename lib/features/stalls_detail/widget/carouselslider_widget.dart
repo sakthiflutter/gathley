@@ -12,8 +12,8 @@ import 'package:get/get.dart';
 import '../../../utill/color_resources.dart';
 
 class CarouselSlide extends StatefulWidget {
-  int stallsid;
-  CarouselSlide({super.key, required this.stallsid});
+ final int stallsid;
+ const CarouselSlide({super.key, required this.stallsid});
 
   @override
   State<CarouselSlide> createState() => _CarouselSlideState();
@@ -34,21 +34,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
     Con.getstallsmedia(widget.stallsid);
   }
 
-  // void _startAutoSlide(int count) {
-  //   _timer?.cancel();
-  //   _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-  //     if (_currentPage < -1) {
-  //       _currentPage++;
-  //     } else {
-  //       _currentPage = 0; // Loop back to the first slide
-  //     }
-  //     _pageController.animateToPage(
-  //       _currentPage,
-  //       duration: const Duration(milliseconds: 300),
-  //       curve: Curves.easeInOut,
-  //     );
-  //   });
-  // }
+
 
   @override
   void initState() {
@@ -178,7 +164,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
                     bottom: 10,
                     child: SizedBox(
                       width: Dimensions.maxWidth,
-                      child: StoryProgressBar(
+                      child: MediaProgressBar(
                           count: controller.stallthumbnail.length,
                           currentIndex: _currentPage + 1,
                           duration: const Duration(seconds: 3)),

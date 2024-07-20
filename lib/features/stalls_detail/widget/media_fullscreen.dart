@@ -6,9 +6,9 @@ import 'package:gatherly/utill/dimensions.dart';
 import 'package:get/get.dart';
 
 class FullScreenMedia extends StatelessWidget {
-  String filepath;
-  int type;
-  FullScreenMedia({
+  final String filepath;
+  final int type;
+ const FullScreenMedia({
     Key? key,
     required this.filepath,
     required this.type,

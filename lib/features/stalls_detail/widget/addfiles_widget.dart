@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class AddFiles extends StatelessWidget {
-  int id;
-   AddFiles({
+  final int id;
+   const AddFiles({
     super.key,
     required this.id
   });
@@ -50,7 +50,7 @@ class AddFiles extends StatelessWidget {
                     scale: 12,
                     color: ColorResources.testDarkGrey,
                   ),
-                  Text("Attach Files")
+                  const Text("Attach Files")
                 ],
               ),
             ),

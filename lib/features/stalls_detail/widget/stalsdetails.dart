@@ -4,8 +4,8 @@ import 'package:gatherly/utill/color_resources.dart';
 import 'package:gatherly/utill/custom_themes.dart';
 
 class StalsDetails extends StatelessWidget {
-  int stallid;
-  StalsDetails({super.key, required this.stallid});
+  final int stallid;
+ const  StalsDetails({super.key, required this.stallid});
 
   @override
   Widget build(BuildContext context) {

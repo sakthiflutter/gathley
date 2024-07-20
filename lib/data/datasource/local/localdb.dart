@@ -45,7 +45,6 @@ class LocalDb {
     var list = r
         .all<StallsMedia>().query("stallsid ==$id").toList()
        ;
-    print(list.length);
     if (list.isNotEmpty) {
       return list;
     }

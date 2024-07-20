@@ -48,11 +48,7 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
     super.dispose();
   }
 
-  void _toggleFullScreen() {
-    setState(() {
-      _isFullScreen = !_isFullScreen;
-    });
-  }
+
 
   String _formatDuration(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, '0');
@@ -90,20 +86,7 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
               )
             : const CircularProgressIndicator(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            if (_controller.value.isPlaying) {
-              _controller.pause();
-            } else {
-              _controller.play();
-            }
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        ),
-      ),
+
     );
   }
 
