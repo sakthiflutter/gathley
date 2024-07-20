@@ -18,7 +18,7 @@ class FullScreenVideoPlayer extends StatefulWidget {
 
 class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
   late VideoPlayerController _controller;
-  bool _isFullScreen = false;
+  final bool _isFullScreen = false;
   RxBool isload=true.obs;
 
   @override
@@ -102,7 +102,7 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
             _controller,
             allowScrubbing: true,
             colors: const VideoProgressColors(),
-            padding: EdgeInsets.symmetric(horizontal: 18),
+            padding: const EdgeInsets.symmetric(horizontal: 18),
           ),
           Obx(() => isload.value?Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -119,7 +119,7 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
                 ),
               ],
             ),
-          ):SizedBox()),
+          ):const SizedBox()),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,

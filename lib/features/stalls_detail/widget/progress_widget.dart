@@ -68,13 +68,13 @@ class ProgressBar extends StatelessWidget {
   final double progress;
   final Color color;
 
-  ProgressBar({required this.progress, this.color = Colors.grey});
+  const ProgressBar({super.key, required this.progress, this.color = Colors.grey});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 5.0),
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
         height: 5.0,
         decoration: BoxDecoration(
           color: color.withOpacity(0.5),

@@ -8,7 +8,6 @@ import 'package:gatherly/utill/color_resources.dart';
 import 'package:gatherly/utill/dimensions.dart';
 import 'package:gatherly/utill/images.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class AddFiles extends StatelessWidget {
   final int id;
@@ -26,9 +25,9 @@ class AddFiles extends StatelessWidget {
 
         if (result != null) {
           List<File> files = result.paths.map((path) => File(path!)).toList();
-          print(files.length);
-          StallsdetailCon Con = Get.find<StallsdetailCon>();
-          Con.addfiles(files,id);
+
+          StallsdetailCon con = Get.find<StallsdetailCon>();
+          con.addfiles(files,id);
         } else {
           // User canceled the picker
         }

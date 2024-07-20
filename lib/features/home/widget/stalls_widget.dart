@@ -12,7 +12,7 @@ import 'package:gatherly/utill/custom_themes.dart';
 
 class StallsWidget extends StatefulWidget {
  final RealmResults<Stallsmodel> stallsdetails;
-  StallsWidget({
+  const StallsWidget({
     Key? key,
     required this.stallsdetails,
   }) : super(key: key);

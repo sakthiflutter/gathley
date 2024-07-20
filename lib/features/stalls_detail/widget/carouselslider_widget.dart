@@ -24,14 +24,14 @@ class _CarouselSlideState extends State<CarouselSlide> {
 
   int _currentPage = 0;
   Timer? _timer;
-  StallsdetailCon Con = Get.find<StallsdetailCon>();
+  StallsdetailCon con = Get.find<StallsdetailCon>();
   void _onPageChanged(int index) {
     _currentPage = index;
     setState(() {});
   }
 
   getrecord() {
-    Con.getstallsmedia(widget.stallsid);
+    con.getstallsmedia(widget.stallsid);
   }
 
 
@@ -156,7 +156,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
                       borderRadius: BorderRadius.circular(40),
                       color: ColorResources.stallsButton
                     ),
-                    child: Icon(Icons.play_arrow,color: Colors.white,size: 40,),
+                    child: const Icon(Icons.play_arrow,color: Colors.white,size: 40,),
 
                   ),
                 ):const SizedBox(),
